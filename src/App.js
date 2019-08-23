@@ -11,13 +11,20 @@ class App extends React.Component {
   }
   
   handleClick() {
-      console.log("I'm working!")
+      this.setState(prevState => {
+          return {
+              isLoggedIn: !prevState.isLoggedIn
+          }
+      })
   }
   
-  render() {    
-      return (
-          <div>
-              <button onClick={this.handleClick}>LOG IN</button>
+  render() {   
+      let buttonText = this.state.isLoggedIn ? "LOG OUT" : "LOG IN"
+      let displayText = this.state.isLoggedIn ? "Logged in" : "Logged out"
+        return (
+            <div>
+                <button onClick={this.handleClick}>{buttonText}</button>
+                <h1>{displayText}</h1>
           </div>
       )
   }
